@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TelepresenceSelectorActivity">
+
+    <RadioButton
+        android:id="@+id/radioButtonMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Max"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onRadioButtonClicked"/>
+
+    <RadioButton
+        android:id="@+id/radioButtonPad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Pad camera"
+        app:layout_constraintStart_toStartOf="@+id/radioButtonMax"
+        app:layout_constraintTop_toBottomOf="@+id/radioButtonMax"
+        android:onClick="onRadioButtonClicked"/>
+
+    <RadioButton
+        android:id="@+id/radioButtonElf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Elf"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/radioButtonMax"
+        app:layout_constraintStart_toEndOf="@+id/radioButtonMax"
+        android:onClick="onRadioButtonClicked"/>
+
+    <RadioButton
+        android:id="@+id/radioButtonHd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="HD Camera"
+        app:layout_constraintStart_toEndOf="@+id/radioButtonPad"
+        app:layout_constraintTop_toTopOf="@+id/radioButtonPad"
+        android:onClick="onRadioButtonClicked"/>
+
+
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="START"
+        app:layout_constraintStart_toStartOf="@+id/et_room_name"
+        app:layout_constraintTop_toBottomOf="@+id/et_room_name" />
+
+    <EditText
+        android:id="@+id/et_room_name"
+        android:layout_width="225dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/radioButtonPad"
+        app:layout_constraintTop_toBottomOf="@+id/radioButtonPad"
+        android:hint="Room Name"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

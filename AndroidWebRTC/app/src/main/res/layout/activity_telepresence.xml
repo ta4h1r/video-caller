@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Black"
+    tools:context=".TelepresenceActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/remote_gl_surface_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="@+id/remote_gl_surface_view"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/local_gl_surface_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/remote_gl_surface_view"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextureView
+                android:id="@+id/local_gl_surface_buffer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/remote_gl_surface_view"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnCreateRoom"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:onClick="onCreateRoom"
+        android:text="@string/createRoom"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <Button
+        android:id="@+id/btnJoinRoom"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:enabled="false"
+        android:onClick="onJoinRoom"
+        android:text="@string/joinRoom"
+        app:layout_constraintStart_toEndOf="@+id/btnCreateRoom"
+        app:layout_constraintTop_toTopOf="@+id/btnCreateRoom" />
+
+    <Button
+        android:id="@+id/btnHangUp"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:enabled="false"
+        android:onClick="onHangUp"
+        android:text="@string/hangUp"
+        app:layout_constraintStart_toEndOf="@+id/btnJoinRoom"
+        app:layout_constraintTop_toTopOf="@+id/btnJoinRoom" />
+
+    <Button
+        android:id="@+id/btnVolUp"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:enabled="true"
+        android:onClick="onVolUp"
+        android:text="Vol:   +"
+        app:layout_constraintStart_toStartOf="@+id/btnCreateRoom"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateRoom" />
+
+    <Button
+        android:id="@+id/btnVolDown"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:enabled="true"
+        android:onClick="onVolDown"
+        android:text="Vol:   -"
+        app:layout_constraintEnd_toEndOf="@+id/btnHangUp"
+        app:layout_constraintTop_toTopOf="@+id/btnVolUp" />
+
+    <TextView
+        android:id="@+id/tv_room_name"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/White"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateRoom"
+        app:layout_constraintEnd_toEndOf="@+id/btnHangUp"
+        app:layout_constraintStart_toStartOf="@+id/btnCreateRoom" />
+
+    <TextView
+        android:id="@+id/tv_vol"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/White"
+        app:layout_constraintEnd_toEndOf="@+id/btnVolDown"
+        app:layout_constraintStart_toStartOf="@+id/btnVolUp"
+        app:layout_constraintTop_toBottomOf="@+id/btnVolUp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ctrlrobotics" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:srcCompat="@drawable/ad" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
